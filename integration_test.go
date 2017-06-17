@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"os"
 	"testing"
+
+	"github.com/linyows/go-test-setupteardown-sandbox/test"
 )
 
 var (
@@ -35,23 +37,13 @@ func TestIntegration1(t *testing.T) {
 	if !*integration {
 		t.Skip()
 	}
-	t.Log("yooooooo")
-	fmt.Println("TestIntegration1")
+	t.Log("TestIntegration1")
 }
 
 func TestIntegration2(t *testing.T) {
 	if !*integration {
 		t.Skip()
 	}
-	defer setupTest(t)()
-	fmt.Println("TestIntegration2")
-}
-
-func setupTest(t *testing.T) func() {
-	t.Log("setupTest()")
-	fmt.Println("---> Setup each")
-	return func() {
-		t.Log("teardownTest()")
-		fmt.Println("---> Teardown each")
-	}
+	defer test.SetupTeardown(t)()
+	t.Log("TestIntegration2")
 }
