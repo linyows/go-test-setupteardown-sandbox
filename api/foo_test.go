@@ -1,15 +1,16 @@
-package main
+package api
 
 import (
-	"fmt"
 	"testing"
+
+	"github.com/linyows/go-test-setupteardown-sandbox/test"
 )
 
 func TestNewFoo(t *testing.T) {
-	defer setupTest(t)()
+	defer test.SetupTeardown(t)()
 	expect := "foo"
 	res := NewFoo()
-	fmt.Println("TestNewFoo")
+	t.Log("TestNewFoo")
 	if expect != res {
 		t.Errorf("NewFoo: got %s expect %s", res, expect)
 	}
