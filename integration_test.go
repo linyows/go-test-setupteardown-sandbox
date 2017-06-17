@@ -17,20 +17,24 @@ func TestMain(m *testing.M) {
 	flag.Parse()
 	if *integration {
 		setup()
+	} else {
+		fmt.Println("===: Skip Setup")
 	}
 	retCode := m.Run()
 	if *integration {
 		teardown()
+	} else {
+		fmt.Println("===: Skip Teardown")
 	}
 	os.Exit(retCode)
 }
 
 func setup() {
-	fmt.Println("===> Setup all")
+	fmt.Println("===> Setup")
 }
 
 func teardown() {
-	fmt.Println("===> Teardown all")
+	fmt.Println("===> Teardown")
 }
 
 func TestIntegration1(t *testing.T) {
