@@ -15,3 +15,25 @@ func TestNewFoo(t *testing.T) {
 		t.Errorf("NewFoo: got %s expect %s", res, expect)
 	}
 }
+
+func TestFoo(t *testing.T) {
+	t.Run("group", func(t *testing.T) {
+		t.Run("A=1", func(t *testing.T) {
+			expect := "foo"
+			res := NewFoo()
+			t.Log("TestFoo")
+			if expect != res {
+				t.Errorf("NewFoo: got %s expect %s", res, expect)
+			}
+		})
+
+		t.Run("B=1", func(t *testing.T) {
+			expect := "foo"
+			res := NewFoo()
+			t.Log("TestFoo")
+			if expect != res {
+				t.Errorf("NewFoo: got %s expect %s", res, expect)
+			}
+		})
+	})
+}
