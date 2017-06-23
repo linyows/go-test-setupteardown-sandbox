@@ -2,9 +2,11 @@ package test
 
 import "testing"
 
+const color = "\033[1;36m%s\033[0m"
+
 func SetupTeardown(t *testing.T) func() {
-	t.Log("---> Setup each")
+	t.Logf(color, "Setup each")
 	return func() {
-		t.Log("---> Teardown each")
+		t.Logf(color, "Teardown each")
 	}
 }
